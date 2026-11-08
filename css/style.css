@@ -1,0 +1,81 @@
+/* NYU violet palette; Gotham is NYU's typeface (licensed), Montserrat is the free look-alike. */
+:root {
+  --violet: #57068c;
+  --violet-dark: #330662;
+  --violet-light: #f3ecf9;
+  --text: #1e1e24;
+  --muted: #6b6b76;
+  --low: #1b7f3b;
+  --moderate: #b36b00;
+  --busy: #c0262d;
+  --unknown: #8a8a94;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Gotham", "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--violet-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  background: var(--violet);
+  color: #fff;
+  padding: 14px 20px;
+}
+.brand { display: flex; align-items: center; gap: 14px; max-width: 720px; margin: 0 auto; }
+.logo { height: 34px; width: auto; display: block; }
+.wordmark { font-weight: 700; font-size: 1.6rem; letter-spacing: 0.02em; }
+.divider { width: 1px; height: 28px; background: rgba(255, 255, 255, 0.5); }
+.site-title { font-weight: 600; font-size: 1.1rem; }
+
+main { flex: 1; width: 100%; max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  border-top: 6px solid var(--violet);
+  box-shadow: 0 2px 12px rgba(51, 6, 98, 0.12);
+  padding: 28px 24px;
+  text-align: center;
+}
+.eyebrow { margin: 0; font-weight: 600; color: var(--violet); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.85rem; }
+
+.count { margin: 8px 0 4px; font-size: clamp(5rem, 22vw, 9rem); font-weight: 700; line-height: 1; color: var(--violet-dark); }
+.card.offline .count { color: var(--unknown); }
+
+.meter { height: 16px; background: #e6e0ec; border-radius: 8px; overflow: hidden; margin: 18px auto 10px; max-width: 460px; }
+.meter-fill { height: 100%; width: 0; background: var(--unknown); transition: width 0.6s ease, background-color 0.4s ease; }
+
+.rate { margin: 0; font-size: 1.15rem; }
+.muted { color: var(--muted); font-weight: 400; }
+
+.status {
+  display: inline-block;
+  margin: 18px 0 6px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--unknown);
+}
+.status[data-level="low"] { background: var(--low); }
+.status[data-level="moderate"] { background: var(--moderate); }
+.status[data-level="busy"] { background: var(--busy); }
+.status[data-level="offline"] { background: var(--unknown); }
+
+.updated { margin: 6px 0 0; font-size: 0.9rem; color: var(--muted); }
+
+.legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-top: 18px; font-size: 0.9rem; }
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.dot.low { background: var(--low); }
+.dot.moderate { background: var(--moderate); }
+.dot.busy { background: var(--busy); }
+
+footer { text-align: center; padding: 18px 16px 26px; font-size: 0.8rem; color: var(--muted); }

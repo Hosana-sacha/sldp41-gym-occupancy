@@ -1,0 +1,16 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "gym": {
+      ".read": true,
+      ".write": "auth != null && auth.token.email == 'gym-device@sldp41.example.com'",
+      ".validate": "newData.hasChildren(['count', 'occupancyRate', 'capacity', 'updatedAt'])",
+      "count": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 500" },
+      "occupancyRate": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2000" },
+      "capacity": { ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= 500" },
+      "updatedAt": { ".validate": "newData.isNumber()" },
+      "$other": { ".validate": false }
+    }
+  }
+}
